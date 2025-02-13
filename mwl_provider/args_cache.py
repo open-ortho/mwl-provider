@@ -38,67 +38,48 @@ class ArgsCache:
     def load_arguments():
         args = Namespace(
             # The prefix to use when searching for and importing procedure_types from topsdb. Can be something like the camera emoji.
-            procedure_type_prefix=os.getenv('TD_PROCEDURE_TYPE_PREFIX', None),
+            procedure_type_prefix=os.getenv('MP_PROCEDURE_TYPE_PREFIX', None),
 
             # The limit of search results when a query is run. The system is not too efficient, so keeping this limit below 100 is important.
-            limit=os.getenv('TD_LIMIT', 100),
+            limit=os.getenv('MP_LIMIT', 100),
 
             # If set to True, this will also save to local .dcm file the produced MWL.
-            save_mwl=bool(strtobool(os.getenv('TD_SAVE_MWL', 'False'))),
+            save_mwl=bool(strtobool(os.getenv('MP_SAVE_MWL', 'False'))),
 
             # When importing with topsdcmimport, setting to True will keep the existing procedures. False will wipe everything and start fresh.
             keep_procedures=bool(
-                strtobool(os.getenv('TD_KEEP_PROCEDURES', 'True'))),
+                strtobool(os.getenv('MP_KEEP_PROCEDURES', 'True'))),
 
             # The path of the SQLite DB file for the local mapping.
-            database_file=os.getenv('TD_DATABASE_FILE', SQLITE3_DB),
+            database_file=os.getenv('MP_DATABASE_FILE', SQLITE3_DB),
 
             # Needs to be set to True for the /admin web server (configurator UI) to run.
             configurator_ui=bool(
-                strtobool(os.getenv('TD_CONFIGURATOR_UI', 'False'))),
+                strtobool(os.getenv('MP_CONFIGURATOR_UI', 'False'))),
 
             # The secret key required for Flask to run properly (used for configurator UI)
-            flask_secret_key=os.getenv('TD_FLASK_SECRET_KEY', None),
+            flask_secret_key=os.getenv('MP_FLASK_SECRET_KEY', None),
 
             # IP and port for the Flask configurator UI server.
-            web_listen=os.getenv('TD_WEB_LISTEN', '0.0.0.0'),
-            web_port=os.getenv('TD_WEB_PORT', '5000'),
-
-            # The credentials used to connect with topsServer DB
-            topsserver_username=os.getenv(
-                'TD_TOPSSERVER_USERNAME', DEFAULT_TOPSSERVER_USERNAME),
-            topsserver_password=os.getenv('TD_TOPSSERVER_PASSWORD', ''),
-            topsserver_ip=os.getenv('TD_TOPSSERVER_IP', '127.0.0.1'),
-            topsserver_port=os.getenv('TD_TOPSSERVER_PORT', '5432'),
-
-
-            # The credentials used to connect with topsServer SFTP 
-            topsserver_sftp_username=os.getenv(
-                'TD_TOPSSERVER_SFTP_USERNAME', DEFAULT_TOPSSERVER_SFTP_USERNAME),
-            topsserver_sftp_host=os.getenv(
-                'TD_TOPSSERVER_SFTP_HOST', DEFAULT_TOPSSERVER_SFTP_HOST),
-            topsserver_sftp_port=os.getenv(
-                'TD_TOPSSERVER_SFTP_PORT', DEFAULT_TOPSSERVER_SFTP_PORT),
-            topsserver_sftp_key_type=os.getenv('TD_TOPSSERVER_SFTP_KEY_TYPE', 'rsa'),
-            topsserver_sftp_key=os.getenv('TD_TOPSSERVER_SFTP_KEY', None),
-            topsserver_sftp_key_filename=os.getenv('TD_TOPSSERVER_SFTP_KEY_FILENAME', None),
+            web_listen=os.getenv('MP_WEB_LISTEN', '0.0.0.0'),
+            web_port=os.getenv('MP_WEB_PORT', '5000'),
 
             # Needs to be set to True for the DICOM SCP (server) to run and listen for MWLs.
-            dicom_scp=bool(strtobool(os.getenv('TD_DICOM_SCP', 'False'))),
+            dicom_scp=bool(strtobool(os.getenv('MP_DICOM_SCP', 'False'))),
 
             # DICOM SCP Network paramenters for the SCP server.
-            listen=os.getenv('TD_LISTEN', DEFAULT_LISTEN),
-            port=os.getenv('TD_PORT', DEFAULT_PORT),
-            aet=os.getenv('TD_AET', DEFAULT_AET),
+            listen=os.getenv('MP_LISTEN', DEFAULT_LISTEN),
+            port=os.getenv('MP_PORT', DEFAULT_PORT),
+            aet=os.getenv('MP_AET', DEFAULT_AET),
 
             terminology_server_url=os.getenv(
-                'TD_TERMINOLOGY_SERVER_URL', DEFAULT_TERMINOLOGY_SERVER_URL),
+                'MP_TERMINOLOGY_SERVER_URL', DEFAULT_TERMINOLOGY_SERVER_URL),
                 
             terminology_target_system_root_url=os.getenv(
-                'TD_TERMINOLOGY_TARGET_SYSTEM_ROOT_URL', DEFAULT_TERMINOLOGY_TARGET_SYSTEM_ROOT_URL),
+                'MP_TERMINOLOGY_TARGET_SYSTEM_ROOT_URL', DEFAULT_TERMINOLOGY_TARGET_SYSTEM_ROOT_URL),
 
             # Verbosity level: 0=WARNING, 1=INFO, 2=DEBUG
-            verbose=int(os.getenv('TD_VERBOSE', 0))
+            verbose=int(os.getenv('MP_VERBOSE', 0))
         )
         
         # Debug print what we're returning

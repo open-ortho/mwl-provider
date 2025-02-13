@@ -31,7 +31,7 @@ def setup_logging(level):
 def run_flask():
     logger.info(f"{PROGRAM_VERSION_MESSAGE}: Request to start Web Configurator.")
     args = ArgsCache.get_arguments()
-    from tops_dicom.views.configurator_ui import flask_app
+    from mwl_provider.view_flask_admin import flask_app
     debug = False
     if args.verbose == 2:
         debug = True

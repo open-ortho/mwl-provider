@@ -1,8 +1,8 @@
 from logging import DEBUG
-from tops_dicom import logger
-from tops_dicom.args_cache import ArgsCache
-from tops_dicom.constants import CFindStatus
-from tops_dicom.model import populate_dataset
+from mwl_provider import logger
+from mwl_provider.args_cache import ArgsCache
+from mwl_provider.constants import CFindStatus
+from mwl_provider.model import populate_dataset
 
 from mwl_provider.dicom.mwl_converter import MWLConverter
 from mwl_provider.dicom.utils import dataset_to_str, find_start_end_datetimes, find_modalities

@@ -3,12 +3,11 @@
 from pynetdicom import AE, evt, debug_logger, ALL_TRANSFER_SYNTAXES
 from pynetdicom.sop_class import ModalityWorklistInformationFind, VLPhotographicImageStorage,Verification
 
-from tops_dicom import DEFAULT_AET, DEFAULT_PORT, DEFAULT_LISTEN, logger
-from tops_dicom.dicom.dicom_c_find import C_Find
-from tops_dicom.dicom.dicom_c_store import C_Store
-from tops_dicom.args_cache import ArgsCache
+from mwl_provider import DEFAULT_AET, DEFAULT_PORT, DEFAULT_LISTEN, logger
+from mwl_provider.dicom.dicom_c_find import C_Find
+from mwl_provider.args_cache import ArgsCache
 
-from tops_dicom import logger
+from mwl_provider import logger
 # debug_logger()
 
 class SCP():
