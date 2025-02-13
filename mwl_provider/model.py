@@ -166,20 +166,9 @@ class ExternalProcedure(Base):
     requested_procedure = relationship(
         "RequestedProcedure", back_populates="external_procedures")
 
-    def __init__(self, tops_procedure:ProcedureType=None, **kwargs):
-        if tops_procedure is not None:
-            self.from_tops_procedure(tops_procedure=tops_procedure)
-        super(ExternalProcedure, self).__init__(**kwargs)
-
     def __str__(self):
         return self.name
 
-    def from_tops_procedure(self, tops_procedure:ProcedureType):
-            self.code = tops_procedure.type_id
-            self.system = 'http://topsortho.com/topsdb'
-            self.name = tops_procedure.type_label
-            self.short_name = tops_procedure.short_label
-            self.description = tops_procedure.permanent_label
 
 class CodeMixin():
     code_value = Column(String)

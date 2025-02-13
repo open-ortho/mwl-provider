@@ -1,0 +1,21 @@
+services:
+  mwl-provider:
+    profiles:
+      - donotstart
+    image: cr.medoco.health/medoco/mwl-provider:latest
+    hostname: mwl-provider
+    restart: unless-stopped
+    environment:
+      TD_FLASK_SECRET_KEY: 
+      TD_VERBOSE: 2
+      TD_AET: MWL_PROVIDER
+      TD_DICOM_SCP: True # Set to False to turn of DICOM SCP server.
+      TD_PORT: 11112 # Port for DICOM SCP server
+      TD_LISTEN: '*'
+      TD_CONFIGURATOR_UI: True # Set to False to turn off admin configuration web UI
+      TD_TERMINOLOGY_SERVER_URL: http://terminology:8000/fhir/R5 # URL of the terminology server to code translations
+      # TD_TERMINOLOGY_TARGET_SYSTEM_ROOT_URL: http://topsortho.com/fhir/practice
+    ports:
+      - "11112:11112" # Port for DICOM SCP server
+    volumes:
+      - ./_docker_volume:/var/lib/mwl-provider/
