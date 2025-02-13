@@ -1,0 +1,24 @@
+[project]
+name = "mwl-provider"
+version = "0.1.0"
+description = "DICOM Modality Worklist Provider"
+authors = []
+dependencies = [
+    "fhir.resources",
+    "fastapi",
+    "pydicom",
+    "pynetdicom",
+    "sqlalchemy",
+    "alembic",
+    "flask-admin",
+    "flask-sqlalchemy",
+    "wtforms-sqlalchemy",
+]
+requires-python = ">=3.8"
+
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["mwl_provider"]
