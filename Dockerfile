@@ -17,9 +17,13 @@ RUN mkdir -p /var/lib/tops-dicom/
 COPY alembic.ini /app/alembic.ini
 COPY alembic /app/alembic
 
+# Copy and setup entrypoint
+COPY entrypoint.sh /app/
+RUN chmod +x /app/entrypoint.sh
+
 # Environment configuration
 ENV TD_DICOM_SCP=True
 ENV TD_CONFIGURATOR_UI=True
 
-# Run the application
-CMD ["python", "-m", "mwl_provider"]
+# Set the entrypoint
+ENTRYPOINT ["/app/entrypoint.sh"]
