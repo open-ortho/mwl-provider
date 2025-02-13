@@ -23,6 +23,9 @@ dev = [
     "wheel",
 ]
 
+[project.scripts]
+mwl-provider = "mwl_provider.main:main"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
